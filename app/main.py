@@ -20,11 +20,13 @@ def get_weather_dict_from_weather_api(city_name: str = DEFAULT_CITY) -> dict:
         response = requests.get(
             WEATHER_API_URL, params={"key": API_KEY, "q": city_name}
         )
+        response.raise_for_status()
     except HTTPError as http_err:
         print(http_err)
     except RequestException as req_err:
         print(req_err)
-    return response.json()
+    else:
+        return response.json()
 
 
 def weather_dict_to_string(weather_dict: dict) -> str:

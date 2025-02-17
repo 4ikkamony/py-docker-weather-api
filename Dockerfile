@@ -4,9 +4,9 @@ ENV PYTHONUNBUFFERED=1
 
 WORKDIR /usr/src/weather-api/
 
-COPY requirements.txt .
+COPY requirements-build.txt .
 
-RUN pip install --no-cache-dir -r requirements.txt
+RUN pip install --no-cache-dir -r requirements-build.txt
 
 COPY . .
 
